@@ -45,16 +45,16 @@ module.exports = {
             tableData.push(teamObj)
         }
 
+        await browser.close()
         res.status(200).send({
           data: tableData,
           round,
         })
     } catch (e) {
+        await browser.close()
         res.status(400).send({
           errorMessage: e.message
         })
     }
-
-    await browser.close()
   }
 }
