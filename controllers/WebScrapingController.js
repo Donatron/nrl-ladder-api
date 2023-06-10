@@ -2,9 +2,9 @@ const puppeteer = require('puppeteer')
 
 module.exports = {
   getOfficialLadder: async(req,res) => {
+    const browser = await puppeteer.launch({ headless: 'new' })
 
     try {
-        const browser = await puppeteer.launch({ headless: 'new' })
         const page = await browser.newPage()
         const URL = 'https://www.nrl.com/ladder/?competition=111&season=2023'
         await page.goto(URL)
@@ -46,7 +46,7 @@ module.exports = {
         }
 
         await browser.close()
-        res.status(200).send({
+        return res.status(200).send({
           data: tableData,
           round,
         })
