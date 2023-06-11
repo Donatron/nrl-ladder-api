@@ -18,7 +18,10 @@ module.exports = {
     try {
         const page = await browser.newPage()
         const URL = 'https://www.nrl.com/ladder/?competition=111&season=2023'
-        await page.goto(URL)
+        await page.goto(URL, {
+          waitUntil: 'load',
+          timeout: 0
+        })
 
         const tableData = []
         const rows = await page.$$('#ladder-table tbody tr')
