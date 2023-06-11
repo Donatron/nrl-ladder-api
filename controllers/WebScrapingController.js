@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 
 module.exports = {
-  getOfficialLadder: async(req,res) => {
+  getOfficialLadder: async (req,res) => {
     const browser = await puppeteer.launch({ headless: 'new' })
 
     try {
